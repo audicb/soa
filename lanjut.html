@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js" lang="en">
+<html class="" lang="en">
 	<head>
 		<meta charset="utf-8">
 		<meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -86,7 +86,7 @@
                                                 </li>
                                                 <li><a class="pagess" href="#">Layanan</a>
                                                     <ul class="sub-menu">
-                                                        <li><a href="lanjut.html">Pengajuan Studi Lanjut</a></li>
+                                                        <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSfxrGcsHfkmPjMvXP0gY64ik7iz_0w3vEcQzZc5eBE5BV896w/viewform?vc=0&c=0&w=1">Pengajuan Studi Lanjut</a></li>
                                                         <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSekG9CcT0oO2N3M6Iqta9uWqTJnGPfn8jze_Oy9Rcv9bSDUSg/viewform?vc=0&c=0&w=1">Pengajuan Pelatihan</a></li>
                                                     </ul>
                                                 </li>
@@ -104,63 +104,59 @@
             </header>
         <!-- header end -->
         <!-- Start breadcumb Area -->
-        <div class="intro-content">
-                <div class="slider-images">
-                    <img src="img/slider/a.jpg" alt="">
-                </div>
-                <div class="slider-content">
-                    <div class="display-table">
-                        <div class="display-table-cell">
-                            <div class="container">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <!-- layer 1 -->
-                                        <div class="layer-1-2">
-                                            <h1 class="title2">Your Perfomance </h1>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+        <div class="intro-content" >
+            <div class="slider-images" style="height: 250px; overflow: hidden;">
+                <img src="" alt="">
+            </div>
+            <div class="slider-content" style="position: absolute; padding-top: 130px;">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h1 class="title2" style="color: white;">Pengajuan Layanan </h1>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
         <!-- End breadcumb Area -->
         <!-- about-area start -->
         <div class="about-page-area area-padding">
+            <!-- <div id="response">
+                <pre></pre>
+            </div> -->
             <div class="container">
-                <div class="row">
-                    <div class="support-all">
-                        <!-- Start services -->
-                        <div class="col-md-4 col-sm-4 col-xs-12">
-                            <div class="support-services">
-                               <a class="support-images" href="#">01</a>
-                                <div class="support-content">
-                                    <h4><a href="img/perform/personal.png">Personal Perfomance</a></h4>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Start services -->
-                        <div class="col-md-4 col-sm-4 col-xs-12">
-                            <div class="support-services">
-                                <a class="support-images" href="#">02</a>
-                                <div class="support-content">
-                                    <h4><a href="img/perform/lulus.png">Kelulusan Mahasiswa</a></h4>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Start services -->
-                        <div class="col-md-4 col-sm-4 col-xs-12">
-                            <div class="support-services">
-                                <a class="support-images" href="#">03</a>
-                                <div class="support-content">
-                                    <h4><a href="img/perform/80.png">Tel-U Point</a></h4>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Start services -->
+                <form id="my_form" onsubmit="return sendData()" method="POST">
+                    <div class="form-group">
+                        <label for="exampleFormControlInput1">Nama</label>
+                        <input type="text" name="name" class="form-control" id="name" placeholder="Ketikkan nama Anda di sini...">
                     </div>
-				</div>
+                    <div class="form-group">
+                        <label for="exampleFormControlInput1">E-mail</label>
+                        <input type="email" name="email" class="form-control" id="email" placeholder="name@example.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleFormControlSelect1">Karir Pegawai</label>
+                        <select class="form-control" name="karir" id="karir">
+                        <option>Dosen</option>
+                        <option>TPA</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleFormControlSelect1">Jenis Layanan</label>
+                        <select class="form-control" name="jenis" id="jenis">
+                        <option>Studi Lanjut</option>
+                        <option>Beasiswa</option>
+                        <option>Pelatihan Internal</option>
+                        <option>Pelatihan Eksternal</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleFormControlInput1">No. Hanphone</label>
+                        <input type="text" name="hp" class="form-control" id="hp" placeholder="Ketikan nomor hanphone Anda di sini...">
+                    </div>
+                    <input class="btn btn-primary" type="submit" name="submit">
+                    <!-- <div id="server-results">SUCCess</div> -->
+                </form>
             </div>
         </div>
         <!-- about-area end -->
@@ -194,5 +190,69 @@
 		<script src="js/plugins.js"></script>
 		<!-- main js -->
 		<script src="js/main.js"></script>
-	</body>
+    </body>
+    <script>
+        function sendData() {
+            var xhr = new XMLHttpRequest();
+            var url = "https://vz9e68bqtg.execute-api.ap-southeast-1.amazonaws.com/DeployAPILayanan";
+
+            var data = JSON.stringify({
+                name: document.getElementById("naem").value,
+                email: document.getElementById("email").value,
+                karir: documnet.getElementById("karir").value,
+                jenis: documnet.getElementById("jenis").value,
+                hp: documnet.getElementById("hp").value
+            });
+
+            xhr.open("POST", url, true);
+            xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+            xhr.onload = function () {               
+                console.log (this.responseText);
+            };
+
+            xhr.send(data);
+            return false;
+        }
+
+    // $("#my_form").submit(function(e) {
+
+    //     e.preventDefault(); // avoid to execute the actual submit of the form.
+
+    //     var form = $(this);
+    //     var url = form.attr('action');
+
+    //     $.ajax({
+    //         type: "POST",
+    //         url: url,
+    //         data: form.serialize(), // serializes the form's elements.
+    //         success: function(data)
+    //         {
+    //             alert(data); // show response from the php script.
+    //         }
+    //         });
+
+
+    // });
+    
+    // $.ajax({
+    //     url: 'https://vz9e68bqtg.execute-api.ap-southeast-1.amazonaws.com/DeployAPILayanan',
+    //     dataType: 'json',
+    //     type: 'post',
+    //     contentType: 'application/json',
+    //     data: JSON.stringify( { 
+    //         "name"  : $('#name').val(), 
+    //         "email" : $('#email').val(),
+    //         "karir" : $('#karir').val(),
+    //         "jenis" : $('#jenis').val(),
+    //         "hp"    : $('#hp').val()
+    //     } ),
+    //     processData: false,
+    //     success: function( data, textStatus, jQxhr ){
+    //         $('#response pre').html( JSON.stringify( data ) );
+    //     },
+    //     error: function( jqXhr, textStatus, errorThrown ){
+    //         console.log( errorThrown );
+    //     }
+    // });
+    </script>
 </html>
