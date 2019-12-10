@@ -125,7 +125,7 @@
                 <pre></pre>
             </div> -->
             <div class="container">
-                <form id="my_form" onsubmit="return sendData()" method="POST">
+                <form id="my_form"  method="POST">
                     <div class="form-group">
                         <label for="exampleFormControlInput1">Nama</label>
                         <input type="text" name="name" class="form-control" id="name" placeholder="Ketikkan nama Anda di sini...">
@@ -157,6 +157,8 @@
                     <input class="btn btn-primary" type="submit" name="submit">
                     <!-- <div id="server-results">SUCCess</div> -->
                 </form>
+                <!-- <button id="getReq">Send HTTP POST request to a AWS</button>
+                <button id="getData">GET DATA</button> -->
             </div>
         </div>
         <!-- about-area end -->
@@ -164,7 +166,8 @@
 		<!-- all js here -->
 
 		<!-- jquery latest version -->
-		<script src="js/vendor/jquery-1.12.4.min.js"></script>
+        <script src="js/vendor/jquery-1.12.4.min.js"></script>
+        <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script> -->
 		<!-- bootstrap js -->
 		<script src="js/bootstrap.min.js"></script>
 		<!-- owl.carousel js -->
@@ -192,27 +195,30 @@
 		<script src="js/main.js"></script>
     </body>
     <script>
-        function sendData() {
-            var xhr = new XMLHttpRequest();
-            var url = "https://vz9e68bqtg.execute-api.ap-southeast-1.amazonaws.com/DeployAPILayanan";
-
-            var data = JSON.stringify({
-                name: document.getElementById("naem").value,
-                email: document.getElementById("email").value,
-                karir: documnet.getElementById("karir").value,
-                jenis: documnet.getElementById("jenis").value,
-                hp: documnet.getElementById("hp").value
-            });
-
-            xhr.open("POST", url, true);
-            xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-            xhr.onload = function () {               
-                console.log (this.responseText);
-            };
-
-            xhr.send(data);
-            return false;
-        }
+        // function sendData() {
+        //     $.ajax({
+        //             url: 'https://vz9e68bqtg.execute-api.ap-southeast-1.amazonaws.com/production/layanan',
+        //             crossDomain: true,
+        //             dataType: 'json',
+        //             type: 'post',
+        //             contentType: 'application/json',
+        //             data: JSON.stringify( { 
+        //                 "name"  : $('#name').val(), 
+        //                 "email" : $('#email').val(),
+        //                 "karir" : $('#karir').val(),
+        //                 "jenis" : $('#jenis').val(),
+        //                 "hp"    : $('#hp').val()
+        //             }),
+        //             processData: false,
+        //             success: function( data, textStatus, jQxhr ){
+        //                 $('#response pre').html( JSON.stringify( data ) );
+        //             },
+        //             error: function( jqXhr, textStatus, errorThrown ){
+        //                 console.log( errorThrown );
+        //             }
+        //     });
+        //     return false;
+        // };
 
     // $("#my_form").submit(function(e) {
 
@@ -234,8 +240,108 @@
 
     // });
     
+        
+    $(document).ready(function(){
+        $("#my_form").on("submit",function(e) {
+
+            e.preventDefault(); // avoid to execute the actual submit of the form.
+
+            // var form = $(this);
+            // var url = form.attr('action');
+
+            $.ajax({
+                url: 'https://vz9e68bqtg.execute-api.ap-southeast-1.amazonaws.com/v1/new',
+                type: 'POST',
+                // headers: {
+                //     'Content-Type': 'application/json', 
+                //     'Access-Control-Allow-Headers': 'x-requested-with',
+                //     "Access-Control-Allow-Origin" : "*", 
+                //     "Access-Control-Allow-Credentials" : true,
+                // },
+                data: JSON.stringify({
+                        "name"  : $('#name').val(), 
+                        "email" : $('#email').val(),
+                        "karir" : $('#karir').val(),
+                        "jenis" : $('#jenis').val(),
+                        "hp"    : $('#hp').val()
+                    }),
+                success: function(data) {
+                    alert("POSTed successfully");
+                }
+            });
+            window.location.replace("lanjut.html");
+        });
+
+        function sendData() {
+            $.ajax({
+                url: 'https://vz9e68bqtg.execute-api.ap-southeast-1.amazonaws.com/v1/new',
+                type: 'POST',
+                // headers: {
+                //     'Content-Type': 'application/json', 
+                //     'Access-Control-Allow-Headers': 'x-requested-with',
+                //     "Access-Control-Allow-Origin" : "*", 
+                //     "Access-Control-Allow-Credentials" : true,
+                // },
+                data: JSON.stringify({
+                        "name"  : $('#name').val(), 
+                        "email" : $('#email').val(),
+                        "karir" : $('#karir').val(),
+                        "jenis" : $('#jenis').val(),
+                        "hp"    : $('#hp').val()
+                    }),
+                success: function(data) {
+                    alert("POSTed successfully");
+                }
+            });
+            return false;
+        };
+        $("#getReq").click(function(){
+            $.ajax({
+                url: 'https://vz9e68bqtg.execute-api.ap-southeast-1.amazonaws.com/v1/new',
+                type: 'POST',
+                // headers: {
+                //     'Content-Type': 'application/json', 
+                //     'Access-Control-Allow-Headers': 'x-requested-with',
+                //     "Access-Control-Allow-Origin" : "*", 
+                //     "Access-Control-Allow-Credentials" : true,
+                // },
+                data: JSON.stringify({
+                        "name"  : $('#name').val(), 
+                        "email" : $('#email').val(),
+                        "karir" : $('#karir').val(),
+                        "jenis" : $('#jenis').val(),
+                        "hp"    : $('#hp').val()
+                    }),
+                success: function(data) {
+                    alert("POSTed successfully");
+                }
+            });
+        });
+
+        var datates = JSON.stringify({
+                        "name": "dari interface 3.25",
+                        "email": "a@b.c",
+                        "karir": "abc",
+                        "jenis": "abc",
+                        "hp": "123"
+                    });
+        console.log(datates);
+        
+        $('#getData').click(function(){
+            var dataset = JSON.stringify({
+                        "name"  : $('#name').val(), 
+                        "email" : $('#email').val(),
+                        "karir" : $('#karir').val(),
+                        "jenis" : $('#jenis').val(),
+                        "hp"    : $('#hp').val()
+                    });
+            console.log(dataset)
+        });
+    });
+
+
     // $.ajax({
-    //     url: 'https://vz9e68bqtg.execute-api.ap-southeast-1.amazonaws.com/DeployAPILayanan',
+    //     url: 'https://vz9e68bqtg.execute-api.ap-southeast-1.amazonaws.com/production/layanan',
     //     dataType: 'json',
     //     type: 'post',
     //     contentType: 'application/json',
