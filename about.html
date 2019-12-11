@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html class="no-js" lang="en">
 	<head>
 		<meta charset="utf-8">
@@ -33,7 +33,74 @@
 		<link rel="stylesheet" href="css/responsive.css">
 
 		<!-- modernizr css -->
-		<script src="js/vendor/modernizr-2.8.3.min.js"></script>
+        <script src="js/vendor/modernizr-2.8.3.min.js"></script>
+        
+        <style>
+        /* Popup box BEGIN */
+        dd, dt{
+            font-size: small;
+        }
+        .hover_bkgr_fricc, .hover_point{
+            background:rgba(0,0,0,.4);
+            cursor:pointer;
+            display:none;
+            height:100%;
+            left: 0px;
+            position: fixed;
+            text-align:left;
+            top:0;
+            width:100%;
+            z-index:10000;
+        }
+        .hover_bkgr_fricc .helper, .hover_point .helper{
+            display:inline-block;
+            height:100%;
+            vertical-align:middle;
+        }
+        .hover_bkgr_fricc > div , .hover_point > div{
+            background-color: #fff;
+            box-shadow: 10px 10px 60px #555;
+            display: inline-block;
+            height: auto;
+            /* margin: 20px; */
+            /* max-width: 551px; */
+            /* min-height: 100px; */
+            vertical-align: middle;
+            left: 20%;
+            width: 60%;
+            position: relative;
+            border-radius: 8px;
+            padding: 5% 5%;
+        }
+        .popupCloseButton, .popupCloseButton_point {
+            background-color: #fff;
+            border: 3px solid #999;
+            border-radius: 50px;
+            cursor: pointer;
+            display: inline-block;
+            font-family: arial;
+            font-weight: bold;
+            position: absolute;
+            top: -20px;
+            right: -20px;
+            font-size: 25px;
+            line-height: 30px;
+            width: 30px;
+            height: 30px;
+            text-align: center;
+        }
+        .popupCloseButton:hover {
+            background-color: #ccc;
+        }
+        .trigger_popup_fricc, .trigger_point {
+            cursor: pointer;
+            font-size: 20px;
+            margin: 20px;
+            display: inline-block;
+            font-weight: bold;
+        }
+        /* Popup box BEGIN */
+        </style>
 	</head>
 		<body>
 
@@ -86,8 +153,7 @@
 											</li>
 											<li><a class="pagess" href="#">Layanan</a>
 												<ul class="sub-menu">
-                                                    <li><a href="lanjut.html">Pengajuan Studi Lanjut</a></li>
-                                                    <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSekG9CcT0oO2N3M6Iqta9uWqTJnGPfn8jze_Oy9Rcv9bSDUSg/viewform?vc=0&c=0&w=1">Pengajuan Pelatihan</a></li>
+                                                    <li><a href="lanjut.html">Pengajuan</a></li>
 												</ul>
 											</li>
                                         </ul>
@@ -127,27 +193,70 @@
                         <!-- Start services -->
                         <div class="col-md-4 col-sm-4 col-xs-12">
                             <div class="support-services">
-                               <a class="support-images" href="#">01</a>
+                               <a class="support-images" id="trigger_popup_fricc" href="#">01</a>
                                 <div class="support-content">
-                                    <h4><a href="img/perform/personal.png">Personal Perfomance</a></h4>
+                                    <h4><a href="#" id="trigger_popup_fricc">Personal Perfomance</a></h4>
+                                    <!-- popup start -->
+                                    <div class="hover_bkgr_fricc">
+                                        <span class="helper"></span>
+                                        <div style="margin: auto;">
+                                            <div class="popupCloseButton">X</div>
+                                            <dl class="row">
+                                                <dt class="col-sm-3">Nama</dt>
+                                                <dd class="col-sm-9" id="name">A description list is perfect for defining terms.</dd>
+                                              
+                                                <dt class="col-sm-3">Email</dt>
+                                                <dd class="col-sm-9" id="email"></dd>
+                                              
+                                                <dt class="col-sm-3">No. Handphone</dt>
+                                                <dd class="col-sm-9" id="hp">Etiam porta sem malesuada magna mollis euismod.</dd>
+                                              
+                                                <!-- <dt class="col-sm-3 text-truncate">Truncated term is truncated</dt>
+                                                <dd class="col-sm-9">Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</dd> -->
+                                                
+                                                
+                                                <dt class="col-sm-3" style="margin-top: 4%;">Personal Performance</dt>
+                                                <dd class="col-sm-9" >
+                                                  <dl class="row" style="margin-top: 3%;" id="report">
+                                                    <!-- <dt class="col-sm-4">Mata kuliah</dt>
+                                                    <dd class="col-sm-8">Aenean posuere, tortor sed cursus feugiat, nunc augue blandit nunc.</dd>
+                                                    
+                                                    <dt class="col-sm-4">Kehadiran</dt>
+                                                    <dd class="col-sm-8">Aenean posuere, tortor sed cursus feugiat, nunc augue blandit nunc.</dd>
+                                                    
+                                                    <dt class="col-sm-4">Nilai rata-rata kelas</dt>
+                                                    <dd class="col-sm-8">Aenean posuere, tortor sed cursus feugiat, nunc augue blandit nunc.</dd>
+                                                    
+                                                    <dt class="col-sm-4">Kelulusan mahasiswa</dt>
+                                                    <dd class="col-sm-8">Aenean posuere, tortor sed cursus feugiat, nunc augue blandit nunc.</dd>
+                                                    
+                                                    <dt class="col-sm-4">Skor survei</dt>
+                                                    <dd class="col-sm-8">Aenean posuere, tortor sed cursus feugiat, nunc augue blandit nunc.</dd> -->
+                                                  </dl>
+                                                </dd>
+                                            </dl>
+                                        </div>
+                                    </div>
+                                    <!-- popup end -->
                                 </div>
                             </div>
                         </div>
                         <!-- Start services -->
                         <div class="col-md-4 col-sm-4 col-xs-12">
                             <div class="support-services">
-                                <a class="support-images" href="#">02</a>
-                                <div class="support-content">
-                                    <h4><a href="img/perform/lulus.png">Kelulusan Mahasiswa</a></h4>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Start services -->
-                        <div class="col-md-4 col-sm-4 col-xs-12">
-                            <div class="support-services">
-                                <a class="support-images" href="#">03</a>
+                                <a class="support-images" href="#" id="trigger_point">02</a>
                                 <div class="support-content">
                                     <h4><a href="img/perform/80.png">Tel-U Point</a></h4>
+                                    <!-- popup start -->
+                                    <div class="hover_point">
+                                        <span class="helper"></span>
+                                        <div style="text-align: center;">
+                                            <div class="popupCloseButton_point">X</div>
+                                            <h4>Tel-U Point Anda sejumlah</h4>
+                                            <h1 id="point"></h1>
+                                        </div>
+                                    </div>
+                                    <!-- popup end -->
                                 </div>
                             </div>
                         </div>
@@ -161,7 +270,8 @@
 		<!-- all js here -->
 
 		<!-- jquery latest version -->
-		<script src="js/vendor/jquery-1.12.4.min.js"></script>
+        <script src="js/vendor/jquery-1.12.4.min.js"></script>
+        <!-- <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script> -->
 		<!-- bootstrap js -->
 		<script src="js/bootstrap.min.js"></script>
 		<!-- owl.carousel js -->
@@ -187,5 +297,73 @@
 		<script src="js/plugins.js"></script>
 		<!-- main js -->
 		<script src="js/main.js"></script>
-	</body>
+    </body>
+    <script>
+        console.log('oke')
+        // $.ajax({
+        //     url : "https://vz9e68bqtg.execute-api.ap-southeast-1.amazonaws.com/v1/pegawai",
+        //     type : "GET",
+        //     dataType: "json",
+        //     crossDomain: true,
+        //     headers: {
+        //         'Access-Control-Allow-Origin' : '*',
+        //         'Access-Control-Allow-Method' : 'GET',
+        //         'Access-Control-Allow-Headers' : ['Content-Type', 'Authorization']
+        //     },
+        //     contentType: 'application/json',
+        //     data:{get_param : 'body'},
+        //     error:function(data){
+        //         console.log(data)
+        //         }
+        //         // document.getElementsByClassName("tweet")[0].innerHTML = addData;
+            
+        // });
+
+        // console.log(data)
+
+        $(document).ready(function(){
+            $.getJSON('https://vz9e68bqtg.execute-api.ap-southeast-1.amazonaws.com/v1/pegawai', function(dataPerf){
+                console.log(dataPerf[0].report[0].avg_nilai)
+                $('#name').text(dataPerf[0].name)
+                $('#email').text(dataPerf[0].email)
+                $('#hp').text(dataPerf[0].hp)
+                $('#point').text(dataPerf[0].point+' Point')
+                for(i=0; i<dataPerf[0].report.length; i++){
+                    $('#report').append('<dt class="col-sm-4" style="margin-top: 3%;">Mata kuliah</dt>'+
+                    '<dd class="col-sm-8" style="margin-top: 3%;">'+dataPerf[0].report[i].mata_kuliah+'</dd>'+
+                    '<dt class="col-sm-4">Kehadiran</dt>'+
+                    '<dd class="col-sm-8">'+dataPerf[0].report[i].kehadiran+'</dd>'+
+                    '<dt class="col-sm-4">Nilai rata-rata kelas</dt>'+
+                    '<dd class="col-sm-8">'+dataPerf[0].report[i].avg_nilai+' / 100</dd>'+
+                    '<dt class="col-sm-4">Kelulusan mahasiswa</dt>'+
+                    '<dd class="col-sm-8">'+dataPerf[0].report[i].kelulusan+'</dd>'+
+                    '<dt class="col-sm-4">Skor survei</dt>'+
+                    '<dd class="col-sm-8">'+dataPerf[0].report[i].survei_nilai+' / 100</dd>')
+                }
+            })
+
+            $(window).load(function () {
+                $("#trigger_popup_fricc").click(function(){
+                    $('.hover_bkgr_fricc').show();
+                });
+                $('.hover_bkgr_fricc').click(function(){
+                    $('.hover_bkgr_fricc').hide();
+                });
+                $('.popupCloseButton').click(function(){
+                    $('.hover_bkgr_fricc').hide();
+                });
+
+                $('#trigger_point').click(function(){
+                    $('.hover_point').show();
+                });
+                $('.hover_point').click(function(){
+                    $('.hover_point').hide();
+                });
+                $('.popupCloseButton_point').click(function(){
+                    $('.hover_point').hide();
+                });
+
+            });
+        })
+    </script>
 </html>
